@@ -1,8 +1,13 @@
-use clap::Parser;
+use clap::{Parser, Subcommand};
+
+#[derive(Parser)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+    name: String
+}
 
 fn main() {
-    let pattern = std::env::args().nth(1).expect("no pattern given");
-    let path = std::env::args().nth(2).expect("no path given");
+    let cli = Args::parse();
 
-    println!("pattern: {:?}, path {:?}", pattern, path);
+    println!("Hello, {}!", cli.name);
 }
