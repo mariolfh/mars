@@ -3,11 +3,21 @@ use clap::{Parser, Subcommand};
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    name: String
+    #[command(subcommand)]
+    com: Commands
+}
+
+#[derive(Subcommand, Debug, Clone)]
+enum Commands {
+    Welcome,
+    Mars
 }
 
 fn main() {
     let cli = Args::parse();
-
-    println!("Hello, {}!", cli.name);
+    
+    match cli.com {
+        Commands::Welcome => println!("Welcome to Mars!"),
+        Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot, and astronaut")
+    }
 }
