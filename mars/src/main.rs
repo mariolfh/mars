@@ -1,5 +1,7 @@
 use clap::{Parser, Subcommand};
 
+/// A CLI application containing multiple most used functions and scripts
+
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Args {
@@ -9,11 +11,15 @@ struct Args {
 
 #[derive(Subcommand, Debug, Clone)]
 enum Commands {
+    /// shows a welcome message
     Welcome,
+    /// Shows the quote that inspires the project
     Mars,
+    /// Converts a string into uppercase
     Uppercase {
         value: String
     },
+    /// Converts a string into lowercase
     Lowercase {
         value: String
     }
