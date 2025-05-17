@@ -11,9 +11,9 @@ struct Args {
 
 #[derive(Subcommand, Debug, Clone)]
 enum Commands {
-    /// returns a simple welcoming message to the program.
+    /// returns a simple welcoming message to the user.
     Welcome,
-    /// returns the inspirational quote that inspires the project.
+    /// returns the inspirational quote that inspires the project along with the author of the quote.
     Mars,
     /// Converts all letters to uppercase in a given string.
     Uppercase {
@@ -30,7 +30,7 @@ fn main() {
     
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
-        Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut"),
+        Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut, 2009"),
         Commands::Uppercase{value} => uppercase(value),
         Commands::Lowercase{value} => lowercase(value)  
     }
