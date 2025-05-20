@@ -37,19 +37,35 @@
 The entirety of the project, including the design, planning and implementation is maintained by the author, @mariolfh on Github \cite{githubinc.MariolfhOverview2025}. As a computer science graduate, getting into contact with all sort of concepts and ideas was something marvelous. So, in the hopes of having several important and key tools at hand, mixed with a love for terminals, made the original thought that would turn into this project. 
 
 \section{What's \emph{mars}?}
-Mars is a command-line interface tool designed to assist developers and power users with daily tasks without leaving the terminal. It serves as a personal toolset that that runs entirely offline, focusing on staying simple.
-This project follows two main objectives:
+Mars is a command-line interface tool designed to assist developers and power users with daily tasks without leaving the terminal. It serves as a personal tool set that that runs entirely off line, focusing on staying simple.
+This project follows three main objectives:
 \begin{enumerate}
-\item{Learn and practice new technologies.}
-\item{Showcase my abilities with certain prefered technologies.}
-\item{Share some of my personal tools / project ideas with the world.}
+\item{To learn and practice new technologies.}
+\item{To showcase my abilities with certain prefered technologies.}
+\item{To share some of my personal tools / project ideas with the world.}
 \end{enumerate}
+
+\section{Intended Audiences}
+This product is thought and designed for technical users, which are users of any computer that has a certain level of tecnical knowledge, which include using the Command Prompt, installing \emph{mars} and calling it with the corresponding commands. Therefore, the term technical users can range between computer hobbyists, scientists, developers and any other user with curiosity for programs beyond graphical user interfaces.
 
 \section{Technologies}
 This project wanted to be low maintenance and keep it simple, something great for the command line to do. For this task a low level language was needed, in this case, Rust \cite{RustProgrammingLanguage} was the best option. Both a personal like and something new, it proved worthy of the task. For the documentation you're reading, \LaTeX\ \cite{LaTeXDocumentPreparation} came along, as it was a technology i wanted to learn since college and that  has proved worthy of taking. Finally but not least, this is all being saved by a version control system, which in this case is Git \cite{Git}.
 
 \chapter{Overall Description}
-\section{}
+\section{Product Perspective}
+This piece of software began from a crave the author had during college. On the average developer's day to day work flow filled with tools and graphical user interfaces, getting focus can be difficult, and having the right tools for the job can very often be a dread. With that in mind, the author intends to present a simple, off line and terminal based (therefore always accessible) and tool rich program that can satisfy technical users' daily needs.
+
+\section{Product Functions}
+With the goal to create something technical users will love to have and use daily and thinking on having functionalities that have a daily use in a local, off line and simple format, the functions designed for this program are:
+\begin{itemize}
+\item{String functions: From uppercase, lowercase and randomize, most used string functions are available for use right from the terminal.}
+\item{Math functions: Adding and subtracting numbers is kind of basic, but it's integrated. Looking to dive into more complex mathematics with time.}
+\item{Logging knowledge: without having to leave the terminal, you can log your thoughts or your notes of the day.}
+\item{Reminders: having a hard time remembering to drink water? let \emph{mars} remind you!}
+\end{itemize}
+
+\section{Operating Environment}
+The program will operate on Microsoft Windows with support for other operating systems coming in the future. For now testing is being done only on Windows 10, so this is the platform recommended for the use of the program for the near future.
 
 \chapter{Requirements}
 \section{Functional requirements}
@@ -78,7 +94,7 @@ No. & Name & Description \\
 This chapter goes deep into the usage of \emph{mars} \cite{fernandezMariolfhMars2025}.  From code snippets and usage to examples, you'll get it all. 
 
 \subsection{Welcome}
-This function prints a welcoming message to the user. Firstly thought as a meme or joke, it stayed as one of the first functions to be written for the app. It also served as a test run to check if the app worked at all.
+This function prints a welcoming message to the user. Firstly thought as a meme or joke, it stayed as one of the first functions to be written for the app. It also served as a test run to check if the program worked at all.
 \subsubsection{Usage}
 \begin{lstlisting}
 // Basic command call
@@ -87,7 +103,7 @@ Welcome to Mars!
 \end{lstlisting}
 
 \subsection{Mars}
-This function prints the main inspirational quote for the emph{mars} project, said by Buzz Aldrid, an American pilot and astronaut. It's all there, at reach, waiting for us to get there, no matter how much time it takes, you just gotta make the effort to get there. It's very inspiriing to myself.
+This function prints the main inspirational quote for the \emph{mars} project, said by Buzz Aldrid, an American pilot and astronaut. It's all there, at reach, waiting for us to get there, no matter how much time it takes, you just gotta make the effort to get there. It's very inspiring to myself.
 \subsubsection{Usage}
 \begin{lstlisting}
 // Basic command call
@@ -113,7 +129,7 @@ $ mars lowercase <STRING>
 
 \chapter{Final Considerations}
 \section{Closing thoughts}
-I wanted to take the time to express myself down here, and so, i want to thank several people who i won't mention for believing in me and for boosting to come back into my field and heart. Also, I want you, the reader, to take this as a sign that something brighet and big is out there for you, even if you think it hasn't come or it isn't your turn yet. Guess what? You make your turn! I did the same thing with this project, my first project, on my own. Doing it, scared and excited, but doing it. Go after the things you like and want to know. The only thing stopping you is yourself.
+I wanted to take the time to express myself down here, and so, i want to thank several people who i won't mention for believing in me and for boosting to come back into my field and heart. Also, I want you, the reader, to take this as a sign that something bright and big is out there for you, even if you think it hasn't come or it isn't your turn yet. Guess what? You make your turn! I did the same thing with this project, my first project, on my own. Doing it, scared and excited, but doing it. Go after the things you like and want to know. The only thing stopping you is yourself.
 
 \printbibliography[title=Citations]
 
