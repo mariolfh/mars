@@ -60,7 +60,7 @@ With the goal to create something technical users will love to have and use dail
 \begin{itemize}
 \item{String functions: From uppercase, lowercase and randomize, most used string functions are available for use right from the terminal.}
 \item{Math functions: Adding and subtracting numbers is kind of basic, but it's integrated. Looking to dive into more complex mathematics with time.}
-\item{Logging knowledge: without having to leave the terminal, you can log your thoughts or your notes of the day.}
+\item{Logging information: without having to leave the terminal, you can log your thoughts or your notes of the day.}
 \item{Reminders: having a hard time remembering to drink water? let \emph{mars} remind you!}
 \end{itemize}
 
@@ -70,11 +70,17 @@ The program will operate on Microsoft Windows with support for other operating s
 \chapter{Requirements}
 \section{Functional requirements}
 \begin{center}
-\begin{tabular}{ || c | c | c ||}
+\begin{tabular}{ || c | c | p{7cm} ||}
 \hline
 No. & Name & Description \\
 \hline
-1. & Test name & This description is for test purposes only! \\
+1. & Print welcome message & The system shall print a welcome message to the user when running the command. \\
+\hline
+2. & Print inspirational phrase & The system shall print the inspirational phrase that motivated the development of \emph{mars} \\
+\hline
+3. & Print uppercase string & The system shall print a given string in uppercase. \\
+\hline
+4. & Print lowercase string & The system shall print a given string in lowercase. \\
 \hline
 \end{tabular}
 \end{center}
@@ -120,7 +126,7 @@ $ mars uppercase <string>
 \end{lstlisting}
 
 \subsection{Lowercase}
-This function requires a string as a parameter. This string is taken by the tool and is returned with all characters in uppercase. This saved lots of work during college, in which I needed to present author names in lowercase for my papers. Back then it was written in Python and just sitting around in a scripts folder, but now it's here as a part of something much bigger.
+This function requires a string as a parameter. This string is taken by the tool and is returned with all characters in lowercase. This saved lots of work during college, in which I needed to present author names in lowercase for my papers. Back then it was written in Python and just sitting around in a scripts folder, but now it's here as a part of something much bigger.
 \begin{lstlisting}
 // Basic command call
 $ mars lowercase <STRING>
