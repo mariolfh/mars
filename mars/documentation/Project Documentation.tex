@@ -6,6 +6,8 @@
 \usepackage{geometry}
 \geometry{a4paper}
 
+\usepackage{graphicx}
+
 \usepackage{listings}
 \lstset{frame=tb,	
   language=Java,
@@ -22,6 +24,8 @@
 
 \usepackage[backend=biber]{biblatex}
 \addbibresource{Project Documentation.bib}
+
+\renewcommand{\thefigure}{\arabic{figure}}
 
 \title{mars - a CLI tool}
 \author{Mario Fernández}
@@ -48,6 +52,9 @@ This project follows three main objectives:
 \section{Intended Audiences}
 This product is thought and designed for technical users, which are users of any computer that has a certain level of tecnical knowledge, which include using the Command Prompt, installing \emph{mars} and calling it with the corresponding commands. Therefore, the term technical users can range between computer hobbyists, scientists, developers and any other user with curiosity for programs beyond graphical user interfaces.
 
+\section{Scope}
+This program means to bring several most common functionalities into the command line interface of users who prefer it's use over graphical user interfaces. Meant to assist in a simple way while staying local and off line, \emph{mars} stands as the base for more programs of it's type.
+
 \section{Technologies}
 This project wanted to be low maintenance and keep it simple, something great for the command line to do. For this task a low level language was needed, in this case, Rust \cite{RustProgrammingLanguage} was the best option. Both a personal like and something new, it proved worthy of the task. For the documentation you're reading, \LaTeX\ \cite{LaTeXDocumentPreparation} came along, as it was a technology i wanted to learn since college and that  has proved worthy of taking. Finally but not least, this is all being saved by a version control system, which in this case is Git \cite{Git}.
 
@@ -64,11 +71,31 @@ With the goal to create something technical users will love to have and use dail
 \item{Reminders: having a hard time remembering to drink water? let \emph{mars} remind you!}
 \end{itemize}
 
+\section{User Classes and Characteristics}
+\begin{center}
+\begin{tabular}{|| c | c ||}
+\hline
+Technical user & Users who know and love the terminal and use it often \\
+\hline
+Developers & Users who use the terminal daily \\
+\hline
+\end{tabular}
+\end{center}
+
 \section{Operating Environment}
 The program will operate on Microsoft Windows with support for other operating systems coming in the future. For now testing is being done only on Windows 10, so this is the platform recommended for the use of the program for the near future.
 
+\section{Use Case Diagram}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{marsCasosDeUso.png}
+\caption{System's Use Case Diagram (Made by the author\cite{githubinc.MariolfhOverview2025})}
+\label{fig:UCD}
+\end{figure}
+
 \chapter{Requirements}
-\section{Functional requirements}
+\section{Functional Requirements}
 \begin{center}
 \begin{tabular}{ || c | c | p{7cm} ||}
 \hline
@@ -84,15 +111,15 @@ No. & Name & Description \\
 \hline
 \end{tabular}
 \end{center}
-\section{Non functional requirements}
+\section{Non Functional Requirements}
 \begin{enumerate}
-\subsection{Usability requirements}
+\subsection{Usability Requirements}
 \item{Accessibility: The system must be accessible from the terminal.}
-\subsection{Performance requirements}
+\subsection{Performance Requirements}
 \item{Response time: The system must return its responses in less than 100ms.}
-\subsection{Software requirements}
+\subsection{Software Requirements}
 \item{Platform: The system must run on Microsoft Windows 10.}
-\subsection{Hardware requirements}
+\subsection{Hardware Requirements}
 \item{Processor: The system must be run on a computer with a Dual - Core processor or better.}
 \end{enumerate}
 
