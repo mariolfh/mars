@@ -15,12 +15,9 @@ enum Commands {
     Welcome,
     /// returns the inspirational quote that inspires the project along with the author of the quote.
     Mars,
-    /// Converts all letters to uppercase in a given string.
-    Uppercase {
-        value: String
-    },
-    /// Converts all letters to lowercase in a given string.
-    Lowercase {
+    /// Allows operations on Strings
+    String {
+        operation: String,
         value: String
     }
 }
@@ -31,11 +28,21 @@ fn main() {
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
         Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut, 2009"),
-        Commands::Uppercase{value} => uppercase(value),
-        Commands::Lowercase{value} => lowercase(value)  
+        Commands::String{operation, value} => stringtype(operation, value)
     }
 }
 
+fn stringtype(operation: String, value: String) {
+    if operation == "uppercase"{
+        uppercase(value);
+    }
+    else if operation == "lowercase"{
+        lowercase(value);
+    }
+}
+
+
+/// String Functions
 fn uppercase(value: String) {
     let result = value.to_uppercase();
     println!("{}", result);
