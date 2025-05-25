@@ -39,6 +39,8 @@ fn stringtype(operation: String, value: String) {
     else if operation == "lowercase"{
         lowercase(value);
     }
+    else if operation == "size"{
+        size(value);
 }
 
 
@@ -50,5 +52,10 @@ fn uppercase(value: String) {
 
 fn lowercase(value: String) {
     let result = value.to_lowercase();
+    println!("{}", result);
+}
+
+fn size (value: String) {
+    let result = value.size(value);
     println!("{}", result);
 }
