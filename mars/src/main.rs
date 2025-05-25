@@ -41,6 +41,7 @@ fn stringtype(operation: String, value: String) {
     }
     else if operation == "size"{
         size(value);
+    }
 }
 
 
@@ -56,6 +57,6 @@ fn lowercase(value: String) {
 }
 
 fn size (value: String) {
-    let result = value.size(value);
+    let result = value.len();
     println!("{}", result);
 }
