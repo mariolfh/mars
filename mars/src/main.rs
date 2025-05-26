@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use clippers::Clipboard;
 
 /// A CLI application containing multiple useful functions and scripts
 
@@ -28,7 +29,8 @@ fn main() {
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
         Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut, 2009"),
-        Commands::String{operation, value} => stringtype(operation, value)
+        Commands::String{operation, value} => stringtype(operation, value),
+        Commands::Copy => copy(copied)
     }
 }
 
@@ -44,6 +46,11 @@ fn stringtype(operation: String, value: String) {
     }
 }
 
+fn copy (copied: String){
+    let mut clipboard = Clipboard::get();
+    clipboard.write_text(value). unwrap();
+    println!("Copied to clipboard: {}", copied)
+}
 
 /// String Functions
 fn uppercase(value: String) {
