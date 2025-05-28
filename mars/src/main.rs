@@ -25,7 +25,7 @@ enum Commands {
 
 fn main() {
     let cli = Args::parse();
-    
+    let mut copied = String::from("");
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
         Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut, 2009"),
@@ -48,22 +48,30 @@ fn stringtype(operation: String, value: String) {
 
 fn copy (copied: String){
     let mut clipboard = Clipboard::get();
-    clipboard.write_text(value). unwrap();
+    clipboard.write_text(copied).unwrap();
     println!("Copied to clipboard: {}", copied)
+}
+
+fn copify(copied: &mut String, value: String){
+    copied.clear();
+    copied.push_str(&value);
 }
 
 /// String Functions
 fn uppercase(value: String) {
     let result = value.to_uppercase();
     println!("{}", result);
+    copify(result);
 }
 
 fn lowercase(value: String) {
     let result = value.to_lowercase();
     println!("{}", result);
+    copify(result);
 }
 
 fn size (value: String) {
     let result = value.len();
     println!("{}", result);
+    copify(&mut copied, result);
 }
