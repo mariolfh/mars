@@ -1,5 +1,5 @@
 use clap::{Parser, Subcommand};
-use clippers::Clipboard;
+use arboard::Clipboard;
 
 /// A CLI application containing multiple useful functions and scripts
 
@@ -20,7 +20,9 @@ enum Commands {
     String {
         operation: String,
         value: String
-    }
+    },
+    /// Copies last used String to the system's clipboard
+    Copy
 }
 
 fn main() {
@@ -46,9 +48,9 @@ fn stringtype(operation: String, value: String) {
     }
 }
 
-fn copy (copied: String){
-    let mut clipboard = Clipboard::get();
-    clipboard.write_text(copied).unwrap();
+fn copy (copied: &mut String){
+    let mut clipboard = Clipboard::new()?;
+    clipboard.set_text(copied.to_string());
     println!("Copied to clipboard: {}", copied)
 }
 
@@ -61,13 +63,13 @@ fn copify(copied: &mut String, value: String){
 fn uppercase(value: String) {
     let result = value.to_uppercase();
     println!("{}", result);
-    copify(result);
+    copify(&mut copied, result);
 }
 
 fn lowercase(value: String) {
     let result = value.to_lowercase();
     println!("{}", result);
-    copify(result);
+    copify(&mut copied, result);
 }
 
 fn size (value: String) {
