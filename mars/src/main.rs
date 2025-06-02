@@ -25,32 +25,33 @@ enum Commands {
     Copy
 }
 
-fn main() {
+fn main() { 
     let cli = Args::parse();
-    let mut copied = String::from("");
+    let mut copied = String::from(" ");
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
         Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut, 2009"),
-        Commands::String{operation, value} => stringtype(operation, value),
-        Commands::Copy => copy(copied)
+        Commands::String{operation, value} => stringtype(operation, value, &mut copied),
+        Commands::Copy => copy(&mut copied)
     }
 }
 
-fn stringtype(operation: String, value: String) {
+fn stringtype(operation: String, value: String, copied: &mut String) {
     if operation == "uppercase"{
-        uppercase(value);
+        uppercase(value, copied);
     }
     else if operation == "lowercase"{
-        lowercase(value);
+        lowercase(value, copied);
     }
     else if operation == "size"{
-        size(value);
+        size(value, copied);
     }
 }
 
 fn copy (copied: &mut String){
-    let mut clipboard = Clipboard::new()?;
-    clipboard.set_text(copied.to_string());
+    let mut clippie = Clipboard::new().unwrap();
+    let copycat = copied.to_string();
+    clippie.set_text(copycat).unwrap();
     println!("Copied to clipboard: {}", copied)
 }
 
@@ -60,20 +61,20 @@ fn copify(copied: &mut String, value: String){
 }
 
 /// String Functions
-fn uppercase(value: String) {
+fn uppercase(value: String, copied: &mut String) {
     let result = value.to_uppercase();
     println!("{}", result);
-    copify(&mut copied, result);
+    copify(copied, result);
 }
 
-fn lowercase(value: String) {
+fn lowercase(value: String, copied: &mut String) {
     let result = value.to_lowercase();
     println!("{}", result);
-    copify(&mut copied, result);
+    copify(copied, result);
 }
 
-fn size (value: String) {
+fn size (value: String, copied: &mut String) {
     let result = value.len();
     println!("{}", result);
-    copify(&mut copied, result);
+    copify(copied, result.to_string());
 }
