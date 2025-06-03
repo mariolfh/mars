@@ -1,5 +1,6 @@
 use clap::{Parser, Subcommand};
 use arboard::Clipboard;
+mod fileops;
 
 /// A CLI application containing multiple useful functions and scripts
 
