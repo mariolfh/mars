@@ -9,12 +9,14 @@ fn writer() -> io::Result<()> {
     let mut file = File::create(treasure).unwrap();
     file.write(b"test");
     
-    //let mut file = OpenOptions::new()
-    //    .write(true)
-    //    .read(true)
-    //    .create(true)
-    //    .open(&treasure)?;
-    //writeln!(file, "This is how we progress")?;
+    /*
+    let mut file = OpenOptions::new()
+        .write(true)
+        .read(true)
+        .create(true)
+        .open(&treasure)?;
+    writeln!(file, "This is how we progress")?;
+    */
     Ok(())
 }
 
