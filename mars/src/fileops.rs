@@ -1,13 +1,13 @@
 use std::fs::File;
 use std::path::PathBuf;
 use std::env;
-use std::io::{self, Write, Read};
+use std::io::{Write, Read};
 
-fn writer() -> io::Result<()> {
-    let mut treasure: PathBuf = env::temp_dir();
+fn writer() {
+    let mut treasure: PathBuf = std::env::temp_dir();
     treasure.push("mars.txt");
     let mut file = File::create(treasure).unwrap();
-    file.write(b"test");
+    file.write_all(b"test");
     
     /*
     let mut file = OpenOptions::new()
@@ -17,7 +17,6 @@ fn writer() -> io::Result<()> {
         .open(&treasure)?;
     writeln!(file, "This is how we progress")?;
     */
-    Ok(())
 }
 
 fn reader() {
