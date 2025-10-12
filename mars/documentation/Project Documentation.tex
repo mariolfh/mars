@@ -7,6 +7,14 @@
 \geometry{a4paper}
 
 \usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
 
 \usepackage{listings}
 \lstset{frame=tb,	
@@ -159,6 +167,14 @@ This function requires a string as a parameter. This string is taken by the tool
 // Basic command call
 $ mars lowercase <STRING>
 <string>
+\end{lstlisting}
+
+\subsection{Paste}
+This function doesn't require any parameters to work. It takes whatever the system's clipboard has in store and makes it available inside Mars for later use.
+\begin{lstlisting}
+// Basic command call
+$ mars paste
+Clipboard contents pasted into Mars.
 \end{lstlisting}
 
 \chapter{Final Considerations}
