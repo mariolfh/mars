@@ -1,6 +1,7 @@
 use arboard::Clipboard;
 
-fn copy(){
+pub fn paste() -> String {
     let mut clipboard = Clipboard::new().unwrap();
-    clipboard.set_text("".to_string()).unwrap();
+    let paster = clipboard.get_text().unwrap();
+    return paster;
 }

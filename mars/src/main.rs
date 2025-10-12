@@ -1,7 +1,6 @@
 use clap::{Parser, Subcommand};
 mod clipboard;
 
-
 /// A CLI application containing multiple useful functions and scripts
 
 #[derive(Parser)]
@@ -23,16 +22,20 @@ enum Commands {
         value: String
     },
     /// Copies last used String to the system's clipboard
-    Copy
+    Copy,
+    /// Pastes content of the system's clipboard into Mars
+    Paste
 }
 
 fn main() { 
+    let mut paster = String::from(" ");
     let cli = Args::parse();
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
         Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut, 2009"),
         Commands::String{operation, value} => stringtype(operation, value),
-        Commands::Copy => copy()
+        Commands::Copy => copy(),
+        Commands::Paste => pasting(&mut paster)
     }
 }
 
@@ -50,6 +53,11 @@ fn stringtype(operation: String, value: String) {
 
 fn copy (){
     
+}
+
+fn pasting(paster: &mut String){
+    *paster = clipboard::paste();
+    println!("Clipboard contents pasted into Mars.");
 }
 
 /// String Functions
