@@ -1,25 +1,37 @@
-use std::fs::File;
+use std::fs::{self, File, OpenOptions};
 use std::path::PathBuf;
 use std::env;
-use std::io::{Write, Read};
+use std::io::{self, Write, Read};
 
-fn writer() {
-    let mut treasure: PathBuf = std::env::temp_dir();
-    treasure.push("mars.txt");
-    let mut file = File::create(treasure).unwrap();
-    file.write_all(b"test");
-    
-    /*
-    let mut file = OpenOptions::new()
-        .write(true)
-        .read(true)
-        .create(true)
-        .open(&treasure)?;
-    writeln!(file, "This is how we progress")?;
-    */
+/// Copy related file operations
+pub fn get_cpath() -> PathBuf{
+    let mut cpath = env::temp_dir();
+    cpath.push("mars-copy.txt");
+    cpath
 }
 
-fn reader() {
-    let mut treasure: PathBuf = env::temp_dir();
-    treasure.push("mars.txt");
+pub fn cpath_exists() -> io::Result<()> {
+    let path = get_cpath();
+    if !path.exists() {
+        File::create(&path)?;
+    }
+    Ok(())
+}
+
+pub fn save_copier(value: &str) -> io::Result<()> {
+    let path = get_cpath();
+    let mut file = OpenOptions::new()
+        .write(true)
+        .truncate(true)
+        .open(&path)?;
+    file.write_all(value.as_bytes())?;
+    Ok(())
+}
+
+pub fn get_copier() -> io::Result<String> {
+    let path = get_cpath();
+    let mut file = File::open(&path)?;
+    let mut content = String::new();
+    file.read_to_string(&mut content);
+    Ok(content)
 }
