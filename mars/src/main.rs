@@ -29,12 +29,13 @@ enum Commands {
 
 fn main() { 
     let mut paster = String::from(" ");
+    let mut copier = String:: from(" ");
     let cli = Args::parse();
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
         Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut, 2009"),
         Commands::String{operation, value} => stringtype(operation, value),
-        Commands::Copy => copy(),
+        Commands::Copy => copying(&mut copier),
         Commands::Paste => pasting(&mut paster)
     }
 }
@@ -51,13 +52,18 @@ fn stringtype(operation: String, value: String) {
     }
 }
 
-fn copy (){
-    
+fn copying(copier: &mut String){
+    clipboard::copy(copier);
+    println!("Last used element copied from Mars to the clipboard.");
+}
+
+fn update_copier(copier: &mut String, value: String){
+    *copier = value;
 }
 
 fn pasting(paster: &mut String){
     *paster = clipboard::paste();
-    println!("Clipboard contents pasted into Mars.");
+    println!("Clipboard contents pasted into Mars from the clipboard.");
 }
 
 /// String Functions
