@@ -1,5 +1,6 @@
 use clap::{Parser, Subcommand};
 mod clipboard;
+mod fileops;
 
 /// A CLI application containing multiple useful functions and scripts
 
@@ -28,15 +29,15 @@ enum Commands {
 }
 
 fn main() { 
-    let mut paster = String::from(" ");
-    let mut copier = String:: from(" ");
+    fileops::ppath_exists().unwrap();
+    fileops::cpath_exists().unwrap();
     let cli = Args::parse();
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
         Commands::Mars => println!("“Mars is there, waiting to be reached.” -Buzz Aldrin, American pilot and astronaut, 2009"),
         Commands::String{operation, value} => stringtype(operation, value),
-        Commands::Copy => copying(&mut copier),
-        Commands::Paste => pasting(&mut paster)
+        Commands::Copy => copying(),
+        Commands::Paste => pasting()
     }
 }
 
@@ -52,17 +53,15 @@ fn stringtype(operation: String, value: String) {
     }
 }
 
-fn copying(copier: &mut String){
-    clipboard::copy(copier);
+fn copying(){
+    let copier = fileops::get_copier();
+    clipboard::copy(copier.unwrap());
     println!("Last used element copied from Mars to the clipboard.");
 }
 
-fn update_copier(copier: &mut String, value: String){
-    *copier = value;
-}
-
-fn pasting(paster: &mut String){
-    *paster = clipboard::paste();
+fn pasting(){
+    let paster = clipboard::paste();
+    fileops::save_pastier(&paster).unwrap();
     println!("Clipboard contents pasted into Mars from the clipboard.");
 }
 
@@ -70,14 +69,17 @@ fn pasting(paster: &mut String){
 fn uppercase(value: String) {
     let result = value.to_uppercase();
     println!("{}", result);
+    fileops::save_copier(&result).unwrap();
 }
 
 fn lowercase(value: String) {
     let result = value.to_lowercase();
     println!("{}", result);
+    fileops::save_copier(&result).unwrap();
 }
 
 fn size (value: String) {
     let result = value.len().to_string();
     println!("{}", result);
+    fileops::save_copier(&result).unwrap();
 }
