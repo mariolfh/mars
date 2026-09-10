@@ -29,8 +29,7 @@ enum Commands {
 }
 
 fn main() { 
-    fileops::ppath_exists().unwrap();
-    fileops::cpath_exists().unwrap();
+    fileops::file_exists().unwrap();
     let cli = Args::parse();
     match cli.com {
         Commands::Welcome => println!("Welcome to Mars!"),
@@ -61,7 +60,7 @@ fn copying(){
 
 fn pasting(){
     let paster = clipboard::paste();
-    fileops::save_pastier(&paster).unwrap();
+    fileops::set_copier(&paster).unwrap();
     println!("Clipboard contents pasted into Mars from the clipboard.");
 }
 
@@ -69,17 +68,17 @@ fn pasting(){
 fn uppercase(value: String) {
     let result = value.to_uppercase();
     println!("{}", result);
-    fileops::save_copier(&result).unwrap();
+    fileops::set_copier(&result).unwrap();
 }
 
 fn lowercase(value: String) {
     let result = value.to_lowercase();
     println!("{}", result);
-    fileops::save_copier(&result).unwrap();
+    fileops::set_copier(&result).unwrap();
 }
 
 fn size (value: String) {
     let result = value.len().to_string();
     println!("{}", result);
-    fileops::save_copier(&result).unwrap();
+    fileops::set_copier(&result).unwrap();
 }

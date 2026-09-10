@@ -1,25 +1,25 @@
-use std::fs::{self, File, OpenOptions};
+use std::fs::{File, OpenOptions};
 use std::path::PathBuf;
 use std::env;
 use std::io::{self, Write, Read};
 
-/// Copy related file operations
-pub fn get_cpath() -> PathBuf{
-    let mut cpath = env::temp_dir();
-    cpath.push("mars-copy.txt");
-    cpath
+pub fn get_file() -> PathBuf{
+    let mut file_path = env::temp_dir();
+    file_path.push("mars.txt");
+    file_path
 }
 
-pub fn cpath_exists() -> io::Result<()> {
-    let path = get_cpath();
-    if !path.exists() {
-        File::create(&path)?;
+pub fn file_exists() -> io::Result<()> {
+    let mut file_path = env::temp_dir();
+    file_path.push("mars.txt");
+    if !file_path.exists() {
+        File::create(&file_path)?;
     }
     Ok(())
 }
 
-pub fn save_copier(value: &str) -> io::Result<()> {
-    let path = get_cpath();
+pub fn set_copier(value: &str) -> io::Result<()> {
+    let path = get_file();
     let mut file = OpenOptions::new()
         .write(true)
         .truncate(true)
@@ -29,42 +29,9 @@ pub fn save_copier(value: &str) -> io::Result<()> {
 }
 
 pub fn get_copier() -> io::Result<String> {
-    let path = get_cpath();
+    let path = get_file();
     let mut file = File::open(&path)?;
     let mut content = String::new();
-    file.read_to_string(&mut content);
-    Ok(content)
-}
-
-/// Paste related file operations
-pub fn get_ppath() -> PathBuf{
-    let mut ppath = env::temp_dir();
-    ppath.push("mars-paste.txt");
-    ppath
-}
-
-pub fn ppath_exists() -> io::Result<()> {
-    let path = get_ppath();
-    if !path.exists() {
-        File::create(&path)?;
-    }
-    Ok(())
-}
-
-pub fn save_pastier(value: &str) -> io::Result<()> {
-    let path = get_ppath();
-    let mut file = OpenOptions::new()
-        .write(true)
-        .truncate(true)
-        .open(&path)?;
-    file.write_all(value.as_bytes())?;
-    Ok(())
-}
-
-pub fn get_pastier() -> io::Result<String> {
-    let path = get_ppath();
-    let mut file = File::open(&path)?;
-    let mut content = String::new();
-    file.read_to_string(&mut content);
+    file.read_to_string(&mut content).unwrap();
     Ok(content)
 }
