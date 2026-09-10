@@ -53,31 +53,45 @@ fn stringtype(operation: String, value: String) {
 }
 
 fn copying(){
-    let copier = fileops::get_copier();
-    clipboard::copy(copier.unwrap());
-    println!("Last used element copied from Mars to the clipboard.");
+    let copier = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
+    if copier.is_empty(){
+        println!("No element is stored in Mars. Please use other functions or store a value first.")
+    }
+    else {
+        clipboard::copy(copier);
+        println!("Last used element copied from Mars to the clipboard.");
+    }
 }
 
 fn pasting(){
     let paster = clipboard::paste();
-    fileops::set_copier(&paster).unwrap();
+    Result::expect(fileops::set_copier(&paster), "Error: Value failed to paste into the system's clipboard");
     println!("Clipboard contents pasted into Mars from the clipboard.");
 }
 
 /// String Functions
-fn uppercase(value: String) {
+fn uppercase(mut value: String) {
+    if value.is_empty() {
+        value = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
+    }
     let result = value.to_uppercase();
     println!("{}", result);
     fileops::set_copier(&result).unwrap();
 }
 
-fn lowercase(value: String) {
+fn lowercase(mut value: String) {
+    if value.is_empty() {
+        value = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
+    }
     let result = value.to_lowercase();
     println!("{}", result);
     fileops::set_copier(&result).unwrap();
 }
 
-fn size (value: String) {
+fn size (mut value: String) {
+    if value.is_empty() {
+        value = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
+    }
     let result = value.len().to_string();
     println!("{}", result);
     fileops::set_copier(&result).unwrap();
