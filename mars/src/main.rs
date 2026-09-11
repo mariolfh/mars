@@ -41,7 +41,7 @@ fn main() {
 }
 
 fn stringtype(operation: String, mut value: String) {
-    if value.is_empty() {
+    if value == "*" {
         value = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
     }
     if operation == "uppercase"{
