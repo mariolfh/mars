@@ -40,7 +40,10 @@ fn main() {
     }
 }
 
-fn stringtype(operation: String, value: String) {
+fn stringtype(operation: String, mut value: String) {
+    if value.is_empty() {
+        value = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
+    }
     if operation == "uppercase"{
         uppercase(value);
     }
@@ -70,28 +73,19 @@ fn pasting(){
 }
 
 /// String Functions
-fn uppercase(mut value: String) {
-    if value.is_empty() {
-        value = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
-    }
+fn uppercase(value: String) {
     let result = value.to_uppercase();
     println!("{}", result);
     fileops::set_copier(&result).unwrap();
 }
 
-fn lowercase(mut value: String) {
-    if value.is_empty() {
-        value = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
-    }
+fn lowercase(value: String) {
     let result = value.to_lowercase();
     println!("{}", result);
     fileops::set_copier(&result).unwrap();
 }
 
-fn size (mut value: String) {
-    if value.is_empty() {
-        value = Result::expect(fileops::get_copier(), "Error: Value stored in file not found.");
-    }
+fn size (value: String) {
     let result = value.len().to_string();
     println!("{}", result);
     fileops::set_copier(&result).unwrap();
