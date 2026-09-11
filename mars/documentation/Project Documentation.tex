@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{geometry}
 \geometry{a4paper}
+\usepackage{dirtree}
 
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -41,15 +42,15 @@
 
 \begin{document}
 \maketitle
-
+ 
 \tableofcontents
 
 \chapter{Introduction}
 \section{About the author}
-The entirety of the project, including it's design, planning and implementation is maintained by the author, @mariolfh on Github \cite{githubinc.MariolfhOverview2025}. As a computer science graduate, getting into contact with all sort of concepts and ideas is something marvelous. So, the hopes of having several important and key tools at hand, mixed with a love for terminals, made the original thought that would soon evolve into this project. 
+The entirety of the project, including it's design, planning and implementation is maintained by the author, @mariolfh on Github \cite{githubinc.MariolfhOverview2025}. As a computer science graduate, getting into contact with all sort of new concepts and ideas is something marvelous. So, the hopes of having several important and key tools in one place and at hand, mixed with a love for terminals, made the original thought that would soon evolve into this project. 
 
 \section{What's \emph{mars}?}
-Mars is a command-line interface tool designed to assist developers and power users with daily tasks right from the terminal. It serves as a personal tool-set that runs entirely off line, focusing on simplicity.
+Mars is a command-line interface tool designed to assist developers and power users with daily tasks right from the terminal. It serves as a personal tool-set that runs entirely offline, focusing on simplicity.
 This project follows three main objectives:
 \begin{enumerate}
 \item{To learn and practice new technologies.}
@@ -61,17 +62,17 @@ This project follows three main objectives:
 This product is thought and designed for power users, which are users that have a certain level of technical knowledge, which include using the Command Prompt, installing \emph{mars} and calling it with the corresponding commands. Therefore, the term `power user' can range between computer hobbyists, scientists, developers and any other user with curiosity for programs beyond graphical user interfaces.
 
 \section{Scope}
-This program means to bring several most common functionalities into the command line interface of users who prefer it's use over graphical user interfaces. Meant to assist in a simple way while staying local and off line, \emph{mars} stands as the base for more programs of it's type.
+This program means to bring several most common functionalities into the command line interface of users who prefer it's use over graphical user interfaces. Meant to assist in a simple way while staying local and offline, \emph{mars} stands as the base for more programs of it's type.
 
 \section{Technologies}
 The project was envisioned to be low maintenance and simple, something great for the command line to do. For this task, a low level language was needed, so in this case, Rust \cite{RustProgrammingLanguage} was the best option. Both a personal selection and an unfamiliar technology, it proved worthy of the task. For the documentation you're reading, \LaTeX\ \cite{LaTeXDocumentPreparation} came along, as it's widely used in academia and was something I wanted to learn since college. Finally but not least, this is all being saved by a version control system, which in this case is Git \cite{Git}.
 
 \chapter{Overall Description}
 \section{Product Perspective}
-This piece of software began from a crave the author had during college. On the average developer's day to day work flow filled with tools and graphical user interfaces, getting focus can be difficult, and having the right tools for the job can very often be a dread. With that in mind, the author intends to present a simple, off line, terminal based (therefore always accessible) and tool rich program that can satisfy power users' daily needs.
+This piece of software began from a crave the author had during college. On the average developer's day to day work flow filled with tools and graphical user interfaces, getting focus can be difficult, and having the right tools for the job can very often be a dread. With that in mind, the author intends to present a simple, offline, always accessible, terminal based and tool rich program that can satisfy power users' daily needs.
 
 \section{Product Functions}
-With the goal to create something power users enjoy, and thinking on designing functionalities that can be used on a daily basis locally, off line and with simplicity, the functions this program posess are:
+With the goal to create something power users enjoy, and thinking on designing functionalities that can be used on a daily basis locally, offline and with simplicity, the functions this program posess are:
 \begin{itemize}
 \item{String functions: From uppercase, lowercase and randomize, most used string functions are available for use right from the terminal.}
 \item{Math functions: Adding and subtracting numbers is kind of basic, but it's integrated. Looking to dive into more complex mathematics with time.}
@@ -81,7 +82,7 @@ With the goal to create something power users enjoy, and thinking on designing f
 
 \section{User Classes and Characteristics}
 \begin{center}
-\begin{tabular}{|| c | p{7cm} ||}
+\begin{tabular}{| c | p{7cm} |}
 \hline
 Power user & Users who know and love the terminal, using it in a regular basis \\
 \hline
@@ -131,9 +132,39 @@ No. & Name & Description \\
 \item{Processor: The system must be run on a computer with a Dual - Core processor or better.}
 \end{enumerate}
 
-\chapter{Functionalities}
+\chapter{Implementation}
+\section{File Structure}
+This is the representation of the file structure used in the project. It contains the folders and files that are being published on GitHub and are related to the correct functioning of the application. It contains two folders, one containing all documentation related files and the other the code files.
+
+\dirtree{%
+.1  documentation.
+.2 Project Documentation.bib.
+.2 Project Documentation.pdf.
+.2 Project Documentation.tex.
+.1 src.
+.2 clipboard.rs.
+.2 fileops.rs.
+.2 main.rs.
+.1 Cargo.toml.
+}
+\begin{itemize}
+\item{`Project Documentation.bib'}: This file contains the bibliographical information used in the documentation. All the sources I stored on Zotero are automatically exported to this file to then be cited in this document.
+\item{`Project Documentation.pdf'}: Final document file for the project, rendered in a standard digital document format.
+\item{`Project Documentation.tex'}: Raw code for the document to be rendered of. It included \TeX \space and \LaTeX \space code that generates the document.
+\item{`clipboard.rs'}: File storing the code that manages the clipboard operations, which are copy and paste.
+\item{`fileops.rs'}: File storing the code that takes care of the file operations, such as getting the file, setting values in the file and checking if the file exists.
+\item{`main.rs'}: Main file of the project which manages the code that understands the commands given and what to do with the arguments provided.
+\item{`Cargo.toml'}: Information file that stores the libraries that the project uses along with it's versions.
+\end{itemize}
+
 \section{Commands}
-This chapter goes deep into the usage of \emph{mars} \cite{fernandezMariolfhMars2025}.  From code snippets and usage to examples, you'll get it all. 
+This section goes deep into the usage of \emph{mars} \cite{fernandezMariolfhMars2025}, explaining the main functionalities along with code snippets as demonstration.
+An important thing to notice is that \emph{mars} works with the following structure:
+\begin{lstlisting}
+// Basic command call
+$ mars <command>
+\end{lstlisting}
+In some specific cases, the command will require one or more arguments to work properly. These arguments are required for operation and will be specified as needed in this document.
 
 \subsection{Welcome}
 This function prints a welcome message to the user. Firstly thought as a meme or joke, it stayed as one of the first functions to be written for the app. It also served as a test run to check if the program worked at all.
@@ -153,28 +184,53 @@ $ mars mars
 ``Mars is there, waiting to be reached.'' - Buzz Aldrin, American pilot and astronaut, 2009
 \end{lstlisting}
 
-\subsection{Uppercase}
+\subsection{String}
+The command string works with two arguments: one indicating the operation to be performed and the other to specify the value that is used in said operation. Commands like this that use a value can work with the * placeholder, making the program use the latest stored value for the task instead of a supplied value.
+\begin{lstlisting}
+// Basic command call
+$ mars string <operation> <value>
+$ mars string <operation> *
+\end{lstlisting}
+
+\subsubsection{Uppercase}
 This function requires a string as a parameter. This string is taken by the tool and transforms it into a fully uppercase string. This is very useful to myself, I've needed several times to work with titles in uppercase that were so long to type out again in lowercase, so this is here just for that.
 \begin{lstlisting}
 // Basic command call
-$ mars uppercase <string>
+$ mars string uppercase <string>
 <STRING>
 \end{lstlisting}
 
-\subsection{Lowercase}
+\subsubsection{Lowercase}
 This function requires a string as a parameter. This string is taken by the tool and is returned with all characters in lowercase. This saved lots of work during college, in which I needed to present author names in lowercase for my papers. Back then it was written in Python and just sitting around in a scripts folder, but now it's here as a part of something much bigger.
 \begin{lstlisting}
 // Basic command call
-$ mars lowercase <STRING>
+$ mars string lowercase <STRING>
 <string>
 \end{lstlisting}
 
+\subsubsection{Size}
+This function requires a string as a parameter. The string's length in characters is then calculated and returned.
+\begin{lstlisting}
+// Basic command call
+$ mars string sizee <STRING>
+8
+\end{lstlisting}
+
+
+\subsection{Copy}
+This function doesn't require any parameters to work. It takes the latest value that was processed with Mars and inserts it on the system's clipboard to be used across the system.
+\begin{lstlisting}
+// Basic command call
+$ mars copy
+Last used element copied from Mars to the clipboard.
+\end{lstlisting}
+
 \subsection{Paste}
-This function doesn't require any parameters to work. It takes whatever the system's clipboard has in store and makes it available inside Mars for later use.
+This function doesn't require any parameters to work. It takes whatever the system's clipboard has in store and makes it available inside Mars for later use through the * placeholder.
 \begin{lstlisting}
 // Basic command call
 $ mars paste
-Clipboard contents pasted into Mars.
+Clipboard contents pasted into Mars from the clipboard.
 \end{lstlisting}
 
 \chapter{Final Considerations}
